@@ -436,6 +436,9 @@ function render(){renderCategories();const q=search.value.toLowerCase();const fo
 if(e.tab==='Cook Book'){
  const controls=document.createElement('div');controls.className='scale-controls';controls.setAttribute('aria-label','Recipe scale');
  const current=recipeScales.get(e.name)||1;
+ let normalizedText=e.text.replace('NOTES\nNOTES\n','NOTES\n');
+ const oldMacro=normalizedText.indexOf('\n\nMACROS\nWhole pot at 1x:');
+ if(oldMacro>=0)normalizedText=normalizedText.slice(0,oldMacro);
  for(const [label,m] of [['1/4x',.25],['1/2x',.5],['1x',1],['2x',2],['3x',3]]){const btn=document.createElement('button');btn.type='button';btn.textContent=m===.25?'1/4x':m===.5?'1/2x':label;btn.className=m===current?'active':'';btn.onclick=(ev)=>{ev.preventDefault();ev.stopPropagation();d.open=true;recipeScales.set(e.name,m);text.textContent=scaledRecipe(normalizedText,m);controls.querySelectorAll('button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');if(typeof macro!=='undefined'&&macro){const fmt=n=>Math.round(n*10)/10;macro.innerHTML='<strong>MACROS</strong><br>Approximate whole batch at '+(m===.25?'1/4':m===.5?'1/2':m)+'x: '+Math.round(4474*m).toLocaleString()+' calories | '+fmt(490*m)+' g protein | '+fmt(438.2*m)+' g carbs | '+fmt(88.9*m)+' g fat | '+fmt(52.6*m)+' g fiber'}};controls.append(btn)}
  body.append(controls);text.textContent=scaledRecipe(e.text,current)
 }else{text.textContent=e.text}
