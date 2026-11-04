@@ -762,6 +762,21 @@ function appendStats(body, entry) {
   return stats;
 }
 function appendRecipe(body, entry, details) {
+  if (entry.cal === undefined || entry.p === undefined) {
+    const stats = document.createElement('div');
+    stats.className = 'stats';
+    for (const label of ['CALORIES / SERVING', 'PROTEIN / SERVING']) {
+      const stat = document.createElement('div');
+      stat.className = 'stat';
+      const number = document.createElement('b');
+      number.textContent = 'TBD';
+      const caption = document.createElement('span');
+      caption.textContent = label;
+      stat.append(number, caption);
+      stats.append(stat);
+    }
+    body.append(stats);
+  }
   const controls = document.createElement('div');
   controls.className = 'scale-controls';
   controls.setAttribute('role', 'group');
@@ -775,14 +790,19 @@ function appendRecipe(body, entry, details) {
   values.style.whiteSpace = 'pre-wrap';
   macro.append(heading, values);
   const stats = appendStats(body, entry);
+  if (stats) {
+    const labels = stats.querySelectorAll('span');
+    labels[0].textContent = 'CALORIES / SERVING';
+    labels[1].textContent = 'PROTEIN / SERVING';
+  }
   function update(scale) {
     text.textContent = recipeBody(entry, scale) + '\n\nNOTES\n' + recipes.get(entry.name).notes;
     values.textContent = macroText(entry, scale);
-    // Recipe stat cards describe 1/4 of the selected batch; pantry labels stay fixed.
+    // Recipe stat cards are per-serving values and do not change with batch scale.
     if (stats) {
       const numbers = stats.querySelectorAll('b');
-      numbers[0].textContent = formatNumber(entry.cal * scale);
-      numbers[1].textContent = formatNumber(entry.p * scale) + ' g';
+      numbers[0].textContent = formatNumber(entry.cal);
+      numbers[1].textContent = formatNumber(entry.p) + ' g';
     }
     for (const button of controls.children) {
       const active = Number(button.dataset.scale) === scale;
