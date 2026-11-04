@@ -444,7 +444,7 @@ if(e.name==='Potluck Chicken & Potato Soup'){
  const macro=document.createElement('div');macro.className='macro-box';
  const m=e.tab==='Cook Book'?(recipeScales.get(e.name)||1):1;
  const fmt=n=>Math.round(n*10)/10;
- macro.innerHTML='<strong>MACROS</strong><br>Approximate whole batch at '+(m===.25?'1/4':m===.5?'1/2':m)+'x: '+Math.round(4474*m).toLocaleString()+' calories Â· '+fmt(490*m)+' g protein Â· '+fmt(438.2*m)+' g carbs Â· '+fmt(88.9*m)+' g fat Â· '+fmt(52.6*m)+' g fiber';
+ macro.innerHTML='<strong>MACROS</strong><br>Approximate whole batch at '+(m===.25?'1/4':m===.5?'1/2':m)+'x: '+Math.round(4474*m).toLocaleString()+' calories | '+fmt(490*m)+' g protein | '+fmt(438.2*m)+' g carbs | '+fmt(88.9*m)+' g fat | '+fmt(52.6*m)+' g fiber';
  body.append(macro)
 }
 d.append(s,body);area.append(d)}if(!found.length){const p=document.createElement('p');p.id='empty';p.textContent=category!=='All Recipes'&&category!=='All Items'&&!entries.some(e=>e.tab===tab&&e.categories.includes(category))?(tab==='Cook Book'?'No recipes in this category yet.':'No items in this category yet.'):'No matching entries. Try a different search.';area.append(p)}document.querySelector('#toggle').textContent='Expand all'}document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;category=selections[tab];document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));render()});search.oninput=render;document.querySelector('#toggle').onclick=()=>{const ds=[...area.querySelectorAll('details')];const open=ds.some(d=>!d.open);ds.forEach(d=>d.open=open);document.querySelector('#toggle').textContent=open?'Collapse all':'Expand all'};render();
