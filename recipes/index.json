@@ -1,0 +1,30 @@
+[
+  {
+    "id": "potluck-chicken-potato-soup",
+    "file": "potluck-chicken-potato-soup.json"
+  },
+  {
+    "id": "smoky-dijon-pink-salmon",
+    "file": "smoky-dijon-pink-salmon.json"
+  },
+  {
+    "id": "drd-deluxe-ranch-dressing",
+    "file": "drd-deluxe-ranch-dressing.json"
+  },
+  {
+    "id": "classic-creamy-mustard-red-potato-salad",
+    "file": "classic-creamy-mustard-red-potato-salad.json"
+  },
+  {
+    "id": "smoky-ranch-red-potato-salad",
+    "file": "smoky-ranch-red-potato-salad.json"
+  },
+  {
+    "id": "warm-mustard-and-vinegar-red-potato-salad",
+    "file": "warm-mustard-and-vinegar-red-potato-salad.json"
+  },
+  {
+    "id": "warm-german-red-potato-salad-bacon-and-vinegar",
+    "file": "warm-german-red-potato-salad-bacon-and-vinegar.json"
+  }
+]
