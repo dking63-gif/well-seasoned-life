@@ -1,336 +1,44 @@
-<!doctype html><html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Well-Seasoned Life</title><style>
-:root{font-family:system-ui,sans-serif;color:#35252f;background:#fff4dc}*{box-sizing:border-box}body{margin:0}header{background:#711f58;color:#fff;padding:40px max(22px,calc((100vw - 960px)/2)) 34px}.eyebrow{font-size:12px;letter-spacing:3px;color:#ffd52e}h1{font-family:Georgia,serif;font-weight:normal;font-size:clamp(35px,6vw,54px);margin:12px 0}header p{color:#fff4dc;max-width:560px;line-height:1.6}main{max-width:960px;margin:auto;padding:26px 20px}nav{display:flex;gap:10px;margin-bottom:22px}button{font:inherit;cursor:pointer;border:1px solid #c5cbbf;border-radius:9px;background:#fff;padding:12px 20px;color:#711f58}button.active{background:#711f58;color:#fff}input{font:inherit;padding:16px;border:1px solid #bac4b7;border-radius:10px;width:100%;background:#fff} .bar{display:flex;justify-content:space-between;align-items:center;margin:22px 0 12px}.bar span,.note{font-size:14px;color:#647266}details{background:#fff;border:1px solid #dce0d5;border-radius:12px;margin:12px 0;overflow:hidden}summary{cursor:pointer;padding:20px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px}summary::-webkit-details-marker{display:none}summary:after{content:'+';font-size:26px;color:#b92d61}details[open] summary:after{content:'−'}summary strong{font-family:Georgia,serif;font-size:21px;font-weight:normal}summary small{display:block;margin-top:7px;color:#657466;font-size:13px}.inside{padding:0 20px 22px;line-height:1.7;border-top:1px solid #edf0e8}.stats{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}.stat{background:#f0f4eb;padding:12px 20px;border-radius:8px}.stat b{display:block;font-size:23px}.stat span{font-size:12px;color:#5a6e5c}pre{white-space:pre-wrap;font:inherit}footer{padding:25px 0;color:#657466;font-size:13px}.tag{color:#846026}#empty{padding:40px;text-align:center} @media(max-width:500px){header{padding-top:28px}summary{padding:17px}nav button{flex:1;padding:12px 8px}.stat{padding:10px 15px}}
-.categories{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}.categories[hidden]{display:none}.categories button{font-size:14px;padding:9px 13px;border-radius:24px}.recipe-category{display:inline-block;font-size:12px;color:#b92d61;margin-top:8px}.scale-controls{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 10px}.scale-controls button{padding:7px 11px;font-size:13px}.scale-controls button.active{background:#711f58;color:#fff}.macro-box{margin-top:18px;padding-top:14px;border-top:1px solid #edf0e8;line-height:1.6}.macro-box strong{color:#711f58}button:focus-visible{outline:3px solid #ffd52e;outline-offset:3px}</style><style>body{background:linear-gradient(180deg,#fff4dc,#f8ead2);color:#35252f}header{position:relative;background:linear-gradient(125deg,#711f58 0%,#51205c 65%,#b92d61 100%);border-bottom:5px solid #f2bf00;box-shadow:0 8px 28px rgba(60,22,40,.18)}header:after{content:'';position:absolute;left:0;right:0;bottom:-5px;height:5px;background:linear-gradient(90deg,#946500,#dca400,#ffd52e,#fff1a0,#f2bf00,#9b6800,#ffd33f,#bd8200)}.about-btn{display:inline-block;padding:7px 13px;border:1px solid #ffffff80;border-radius:999px;color:#fff;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:2px}.about-btn:hover{background:#fff;color:#711f58}.brand-home{margin:-8px 0 28px;padding:28px;border-radius:18px;background:#fff4dc;border:1px solid #e2cfa7;box-shadow:0 6px 24px rgba(65,31,44,.08);text-align:center}.brand-kicker{font-size:11px;letter-spacing:3px;color:#8d5070;font-weight:800}.brand-home h2{font:normal clamp(31px,5vw,46px) Georgia,serif;color:#711f58;margin:8px 0 2px}.brand-tagline{font:italic 20px Georgia,serif;color:#51205c;margin-bottom:14px}.brand-home>p{max-width:680px;margin:0 auto 24px;line-height:1.65;color:#604a55}.home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:left}.home-grid article{background:#fff;border:1px solid #e1ced3;border-radius:13px;padding:17px;border-top:4px solid #b92d61}.home-grid article:nth-child(2){border-top-color:#ffd52e}.home-grid article:nth-child(3){border-top-color:#711f58}.home-grid span{font-size:10px;letter-spacing:1.4px;font-weight:800;color:#8b3f61}.home-grid strong{display:block;font:normal 20px Georgia,serif;color:#51205c;margin:7px 0}.home-grid p{margin:0;color:#715b66;font-size:13px;line-height:1.45}@media(max-width:680px){.home-grid{grid-template-columns:1fr}.brand-home{padding:22px 16px}}</style>
-
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Well-Seasoned Life</title>
 <style>
-/* Food-themed desktop rails: wider artwork, natural proportions, full composition visible. */
-@media (min-width:1280px){
-  body{background:linear-gradient(180deg,#fff4dc,#f8ead2);}
-  body::before,body::after{content:"";position:fixed;top:0;bottom:0;width:27vh;min-width:210px;max-width:285px;z-index:0;pointer-events:none;background-color:#f4dfb8;background-repeat:no-repeat;background-size:auto 100vh;background-position:top center;}
-  body::before{left:0;background-image:url('/food-border-left.webp');}
-  body::after{right:0;background-image:url('/food-border-right.webp');}
-  header,main{position:relative;z-index:1;}
-  main{background:linear-gradient(180deg,rgba(255,244,220,.97),rgba(248,234,210,.97));box-shadow:0 0 28px rgba(65,31,44,.10);}
-}
-@media (max-width:1279px){body::before,body::after{display:none;}}
+:root{font-family:system-ui,sans-serif;color:#35252f;background:#fff4dc}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#fff4dc,#f8ead2)}header{position:relative;background:linear-gradient(125deg,#711f58 0%,#51205c 65%,#b92d61 100%);color:#fff;padding:40px max(22px,calc((100vw - 960px)/2)) 34px;border-bottom:5px solid #f2bf00;box-shadow:0 8px 28px rgba(60,22,40,.18)}header:after{content:'';position:absolute;left:0;right:0;bottom:-5px;height:5px;background:linear-gradient(90deg,#946500,#dca400,#ffd52e,#fff1a0,#f2bf00,#9b6800,#ffd33f,#bd8200)}h1{font:normal clamp(35px,6vw,54px) Georgia,serif;margin:12px 0}.about-btn{display:inline-block;padding:7px 13px;border:1px solid #ffffff80;border-radius:999px;color:#fff;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:2px}header p{color:#fff4dc;max-width:560px;line-height:1.6}main{max-width:960px;margin:auto;padding:26px 20px}.brand-home{margin:-8px 0 28px;padding:28px;border-radius:18px;background:#fff4dc;border:1px solid #e2cfa7;box-shadow:0 6px 24px rgba(65,31,44,.08);text-align:center}.brand-kicker{font-size:11px;letter-spacing:3px;color:#8d5070;font-weight:800}.brand-home h2{font:normal clamp(31px,5vw,46px) Georgia,serif;color:#711f58;margin:8px 0 2px}.brand-tagline{font:italic 20px Georgia,serif;color:#51205c;margin-bottom:14px}.brand-home>p{max-width:680px;margin:0 auto 24px;line-height:1.65;color:#604a55}.home-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:left}.home-grid article{background:#fff;border:1px solid #e1ced3;border-radius:13px;padding:17px;border-top:4px solid #b92d61}.home-grid article:nth-child(2){border-top-color:#ffd52e}.home-grid article:nth-child(3){border-top-color:#711f58}.home-grid span{font-size:10px;letter-spacing:1.4px;font-weight:800;color:#8b3f61}.home-grid strong{display:block;font:normal 20px Georgia,serif;color:#51205c;margin:7px 0}.home-grid p{margin:0;color:#715b66;font-size:13px;line-height:1.45}nav,.categories,.scale-controls{display:flex;gap:8px;flex-wrap:wrap}nav{margin-bottom:22px}button{font:inherit;cursor:pointer;border:1px solid #c5cbbf;border-radius:9px;background:#fff;padding:12px 20px;color:#711f58}button.active{background:#711f58;color:#fff}.categories{margin:0 0 18px}.categories button,.scale-controls button{font-size:13px;padding:8px 12px;border-radius:24px}input,select,textarea{font:inherit;padding:13px;border:1px solid #bac4b7;border-radius:10px;width:100%;background:#fff}.bar{display:flex;justify-content:space-between;align-items:center;margin:22px 0 12px}.bar span,.note{font-size:14px;color:#647266}details{background:#fff;border:1px solid #dce0d5;border-radius:12px;margin:12px 0;overflow:hidden}summary{cursor:pointer;padding:20px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px}summary::-webkit-details-marker{display:none}summary:after{content:'+';font-size:26px;color:#b92d61}details[open] summary:after{content:'−'}summary strong{font:normal 21px Georgia,serif}summary small{display:block;margin-top:7px;color:#657466;font-size:13px}.recipe-category{display:inline-block;font-size:12px;color:#b92d61;margin-top:8px}.inside{padding:0 20px 22px;line-height:1.7;border-top:1px solid #edf0e8}.stats{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}.stat{background:#f0f4eb;padding:12px 20px;border-radius:8px}.stat b{display:block;font-size:23px}.stat span{font-size:12px;color:#5a6e5c}pre{white-space:pre-wrap;font:inherit}.macro-box{margin-top:18px;padding-top:14px;border-top:1px solid #edf0e8}.macro-box strong{color:#711f58}.comments-section{margin-top:26px;padding-top:22px;border-top:2px solid #e1ced3}.comments-section h3{margin:0 0 16px;font:normal 24px Georgia,serif;color:#711f58}.comments-list{display:grid;gap:12px;margin-bottom:22px}.comment-card{padding:15px;background:#fff8e9;border:1px solid #e2cfa7;border-radius:10px}.comment-card strong{display:block;color:#51205c}.comment-card p{margin:8px 0 0;white-space:pre-wrap}.comment-stars{display:block;color:#b07a00;letter-spacing:2px;margin-top:4px}.comment-form{display:grid;gap:9px}.comment-form label{font-weight:700;color:#51205c}.comment-form button{justify-self:start;background:#711f58;color:#fff;border-color:#711f58}.comment-form button:disabled{cursor:wait;opacity:.65}.comment-status{min-height:1.4em;margin:0;color:#647266}#empty{padding:40px;text-align:center}footer{padding:25px 0;color:#657466;font-size:13px}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffd52e;outline-offset:3px}@media(min-width:1280px){body::before,body::after{content:"";position:fixed;top:0;bottom:0;width:27vh;min-width:210px;max-width:285px;z-index:0;pointer-events:none;background-color:#f4dfb8;background-repeat:no-repeat;background-size:auto 100vh;background-position:top center}body::before{left:0;background-image:url('/food-border-left.webp')}body::after{right:0;background-image:url('/food-border-right.webp')}header,main{position:relative;z-index:1}main{background:linear-gradient(180deg,rgba(255,244,220,.97),rgba(248,234,210,.97));box-shadow:0 0 28px rgba(65,31,44,.10)}}@media(max-width:1279px){body::before,body::after{display:none}}@media(max-width:680px){.home-grid{grid-template-columns:1fr}.brand-home{padding:22px 16px}}@media(max-width:500px){header{padding-top:28px}summary{padding:17px}nav button{flex:1;padding:12px 8px}.stat{padding:10px 15px}}
 </style>
 </head>
 <body>
-<header><div class="eyebrow"></div><a class="about-btn" href="about.html">DAVID &amp; DONNA</a><h1>The Well-Seasoned Life</h1><p>Come hungry. Stay awhile. Recipes, pantry notes, and good food from David & Donna.</p></header><main><section class="brand-home"><div class="brand-kicker">WELCOME TO</div><h2>The Well-Seasoned Life</h2><div class="brand-tagline">Come hungry. Stay awhile.</div><p>Good food should feel welcoming, flavorful, and worth sharing. Pull up a chair, browse the Cook Book, check the Pantry, and join us at the kitchen table.</p><div class="home-grid"><article><span>THE BOSS'S PICKS</span><strong>Donna's favorites</strong><p>Recipes that earned executive approval.</p></article><article><span>DAVID'S SMOKEHOUSE</span><strong>Big, savory flavor</strong><p>Smoky recipes and kitchen experiments.</p></article><article><span>WHAT'S NEW</span><strong>Fresh from the kitchen</strong><p>Recently added recipes and updates.</p></article></div></section><nav aria-label="Collections"><button class="active" data-tab="Cook Book">Cook Book</button><button data-tab="Pantry">Pantry</button></nav><div id="categories" class="categories" role="group" aria-label="Recipe categories" hidden></div><input id="search" type="search" placeholder="Search names, ingredients, or brands…" aria-label="Search entries"><div class="bar"><span id="count"></span><button id="toggle">Expand all</button></div><section id="entries"></section><footer>The Well-Seasoned Life · Come hungry. Stay awhile.</footer></main><noscript><h2>Pantry &amp; Cook Book</h2><p>Enable JavaScript to load the recipe and pantry database.</p></noscript>
+<header><a class="about-btn" href="about.html">DAVID &amp; DONNA</a><h1>The Well-Seasoned Life</h1><p>Come hungry. Stay awhile. Recipes, pantry notes, and good food from David &amp; Donna.</p></header>
+<main>
+<section class="brand-home"><div class="brand-kicker">WELCOME TO</div><h2>The Well-Seasoned Life</h2><div class="brand-tagline">Come hungry. Stay awhile.</div><p>Good food should feel welcoming, flavorful, and worth sharing. Pull up a chair, browse the Cook Book, check the Pantry, and join us at the kitchen table.</p><div class="home-grid"><article><span>THE BOSS'S PICKS</span><strong>Donna's favorites</strong><p>Recipes that earned executive approval.</p></article><article><span>DAVID'S SMOKEHOUSE</span><strong>Big, savory flavor</strong><p>Smoky recipes and kitchen experiments.</p></article><article><span>WHAT'S NEW</span><strong>Fresh from the kitchen</strong><p>Recently added recipes and updates.</p></article></div></section>
+<nav aria-label="Collections"><button class="active" data-tab="Cook Book">Cook Book</button><button data-tab="Pantry">Pantry</button></nav>
+<div id="categories" class="categories" role="group"></div>
+<input id="search" type="search" placeholder="Search names, ingredients, or brands…" aria-label="Search entries">
+<div class="bar"><span id="count"></span><button id="toggle">Expand all</button></div>
+<section id="entries"></section><footer>The Well-Seasoned Life · Come hungry. Stay awhile.</footer>
+</main>
+<noscript><h2>Pantry &amp; Cook Book</h2><p>Enable JavaScript to load the recipe and pantry database.</p></noscript>
 <script>
 'use strict';
-
-// Base recipe and pantry records. Scaling never mutates these values.
-let entries = [];
-
+const COMMENTS_API='https://falling-king-6c41.dking63.workers.dev/comments';
+let entries=[],tab='Cook Book',category='All Recipes';
+const selections={'Pantry':'All Items','Cook Book':'All Recipes'};
 const recipeCategories=['Main Dishes','Side Dishes','Soups','Breads & Doughs','Sauces & Dressings','Desserts'];
 const pantryCategories=['Meat & Poultry','Fish & Seafood','Dairy & Eggs','Breads & Grains','Vegetables & Salad Kits','Fruit','Protein Bars & Shakes','Snacks & Desserts','Sauces & Seasonings','Drinks'];
-const selections={'Pantry':'All Items','Cook Book':'All Recipes'};
-let category='All Recipes';
-const categoryArea=document.querySelector('#categories');
-function renderCategories(){categoryArea.hidden=false;categoryArea.replaceChildren();categoryArea.setAttribute('aria-label',tab==='Pantry'?'Pantry categories':'Recipe categories');const all=tab==='Pantry'?'All Items':'All Recipes';for(const label of [all,...(tab==='Pantry'?pantryCategories:recipeCategories)]){const button=document.createElement('button');button.type='button';button.textContent=label;button.className=category===label?'active':'';button.setAttribute('aria-pressed',String(category===label));button.onclick=()=>{category=label;selections[tab]=label;render()};categoryArea.append(button);}}
-let tab='Cook Book';const area=document.querySelector('#entries'),search=document.querySelector('#search');
-
-const SCALE_OPTIONS = [['1/4x', 0.25], ['1/2x', 0.5], ['1x', 1], ['2x', 2], ['3x', 3]];
-const recipeScales = new Map();
-const openEntries = new Set();
-const fractions = {'¼':'1/4','½':'1/2','¾':'3/4','⅓':'1/3','⅔':'2/3','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8'};
-const quantityPattern = String.raw`\d+\s+\d+/\d+|\d+/\d+|\d+(?:\.\d+)?`;
-
-function normalizeFractions(text) {
-  return text.replace(/(\d)([¼½¾⅓⅔⅛⅜⅝⅞])/g, '$1 $2')
-    .replace(/[¼½¾⅓⅔⅛⅜⅝⅞]/g, value => fractions[value]);
-}
-function quantityValue(token) {
-  return token.trim().split(/\s+/).reduce((sum, part) => {
-    const [numerator, denominator] = part.split('/').map(Number);
-    return sum + numerator / (denominator || 1);
-  }, 0);
-}
-function formatNumber(value) {
-  return (Math.round((value + Number.EPSILON) * 10000) / 10000).toLocaleString('en-US', {maximumFractionDigits: 4});
-}
-function formatQuantity(value) {
-  // Preserve small quantities; never round them to zero or an eighth.
-  for (const denominator of [1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 64]) {
-    const numerator = Math.round(value * denominator);
-    if (Math.abs(value - numerator / denominator) > 1e-8) continue;
-    const whole = Math.floor(numerator / denominator);
-    const remainder = numerator % denominator;
-    return remainder ? (whole ? whole + ' ' : '') + remainder + '/' + denominator : String(whole);
-  }
-  return formatNumber(value);
-}
-function scaleIngredient(line, scale) {
-  if (scale === 1) return line;
-  const normalized = normalizeFractions(line);
-  const lead = new RegExp('^(About\\s+)?(' + quantityPattern + ')(?:([–-])(' + quantityPattern + '))?(?=\\s|$)', 'i');
-  const match = normalized.match(lead);
-  if (!match) return line;
-  let result = (match[1] || '') + formatQuantity(quantityValue(match[2]) * scale);
-  if (match[4]) result += match[3] + formatQuantity(quantityValue(match[4]) * scale);
-  let rest = normalized.slice(match[0].length);
-  // A package's size is fixed; "2 (12 fl oz) cans" scales only its count.
-  // Parenthetical ingredient weights and alternative/additional measures do scale.
-  if (!/^\s*\(/.test(rest)) {
-    rest = rest.replace(new RegExp('((?:about|plus|OR)\\s+)(' + quantityPattern + ')(?=\\s+(?:lb|oz|tbsp|tsp|cups?|g)\\b)', 'gi'),
-      (_, prefix, quantity) => prefix + formatQuantity(quantityValue(quantity) * scale));
-  }
-  return result + rest;
-}
-function scaleMeasures(text, scale) {
-  if (scale === 1) return text;
-  return normalizeFractions(text).replace(
-    new RegExp('(' + quantityPattern + ')(?=\\s+(?:lb|oz|tbsp|tsp|cups?|g)\\b)', 'g'),
-    quantity => formatQuantity(quantityValue(quantity) * scale));
-}
-function parseRecipe(entry) {
-  const sections = [];
-  let section = {heading: '', lines: []};
-  for (const line of entry.text.replace(/·/g, '·').replace(/\\n/g, '\n').split('\n')) {
-    if (/^[A-Z][A-Z &-]+$/.test(line.trim())) {
-      if (section.heading || section.lines.length) sections.push(section);
-      section = {heading: line.trim(), lines: []};
-    } else section.lines.push(line);
-  }
-  sections.push(section);
-  const body = [], notes = [], macros = [];
-  for (const part of sections) {
-    const content = part.lines.join('\n').trim();
-    if (!content) continue;
-    if (['NOTES', 'RECIPE NOTES', 'NUTRITION STATUS', 'NUTRITION NOTE'].includes(part.heading)) notes.push(content);
-    else if (['MACROS', 'ESTIMATED MACROS', 'NUTRITION'].includes(part.heading)) macros.push(content);
-    else body.push(part);
-  }
-  return {body, notes: [...new Set(notes)].join('\n\n') || 'No additional notes recorded.', macros: macros.join('\n\n')};
-}
-let recipes = new Map();
-
-function recipeBody(entry, scale) {
-  return recipes.get(entry.name).body.map(part => {
-    let content = part.lines.join('\n').trim();
-    if (['INGREDIENTS', 'CHICKEN SEASONING', 'CHICKEN MARINADE', 'DRY MIX'].includes(part.heading)) {
-      content = content.split('\n').map(line => scaleIngredient(line, scale)).join('\n');
-    } else if (part.heading === 'POTATO PREPARATION') {
-      content = content.replace(/^Scrub (.+?)(?= red potatoes)/, (_, amount) => 'Scrub ' + scaleIngredient(amount, scale));
-    } else if (entry.name === 'DRD — Deluxe Ranch Dressing' &&
-        ['PREPARE THE DRESSING', 'CONVERSION'].includes(part.heading)) {
-      content = scaleMeasures(content, scale);
-    } else if (entry.name.includes('Warm German') && part.heading === 'METHOD') {
-      content = content.replace(/1 tbsp/g, formatQuantity(scale) + ' tbsp');
-    } else if (entry.name === 'Potluck Chicken & Potato Soup' && scale !== 1 && part.heading === 'DIRECTIONS') {
-      content = content.replace('both cans of evaporated milk', 'the evaporated milk');
-    }
-    return (part.heading ? part.heading + '\n' : '') + content;
-  }).join('\n\n');
-}
-function macroText(entry, scale) {
-  const label = SCALE_OPTIONS.find(option => option[1] === scale)[0];
-  const fmt = value => formatNumber(value * scale);
-  if (entry.name === 'Potluck Chicken & Potato Soup') {
-    return 'Approximate whole batch at ' + label + ': ' +
-      fmt(4474) + ' calories · ' + fmt(490) + ' g protein · ' + fmt(438.2) +
-      ' g carbs · ' + fmt(88.9) + ' g fat · ' + fmt(52.6) + ' g fiber';
-  }
-  if (entry.name === 'Smoky Dijon Pink Salmon') {
-    return 'Salmon only at ' + label + ' (based on about ' + formatQuantity(scale) +
-      ' lb): ' + fmt(520) + ' calories · ' + fmt(96) +
-      ' g protein.\nCoating nutrition has not been calculated. Use actual salmon weight, excluding packaging, for logging.\nBase label: 130 calories and 24 g protein per 4 oz uncooked.';
-  }
-  if (entry.name === 'DRD — Deluxe Ranch Dressing') {
-    return 'Prepared small dressing batch at ' + label + ': approximately ' +
-      fmt(105) + '–' + fmt(108) + ' calories; yogurt contributes ' + fmt(15.3) +
-      ' g protein.\nDry-mix batch totals and powder protein are not verified. Finished batch volume has not been measured.';
-  }
-  // Only nutrient amounts scale, never the "1/4 batch" fraction, bacon count,
-  // dates, storage times, temperatures, or other numbers in explanatory notes.
-  return 'Estimates at ' + label + ' (per 1/4 of the scaled batch and whole scaled batch):\n' +
-    recipes.get(entry.name).macros.replace(/With 2 strips bacon per batch/g, 'With ' + formatQuantity(2 * scale) + ' strips bacon per batch').replace(/(\d[\d,]*(?:\.\d+)?)(?=\s*(?:kcal|calories|g\s+(?:protein|carbs|fat|fiber))\b)/g,
-      value => fmt(Number(value.replace(/,/g, ''))));
-}
-function appendStats(body, entry) {
-  if (entry.cal === undefined) return;
-  const stats = document.createElement('div');
-  stats.className = 'stats';
-  for (const [value, label] of [[entry.cal, 'CALORIES'], [entry.p + ' g', 'PROTEIN']]) {
-    const stat = document.createElement('div');
-    stat.className = 'stat';
-    const number = document.createElement('b');
-    number.textContent = value;
-    const caption = document.createElement('span');
-    caption.textContent = label;
-    stat.append(number, caption);
-    stats.append(stat);
-  }
-  body.append(stats);
-  return stats;
-}
-function appendRecipe(body, entry, details) {
-  if (entry.cal === undefined || entry.p === undefined) {
-    const stats = document.createElement('div');
-    stats.className = 'stats';
-    for (const label of ['CALORIES / SERVING', 'PROTEIN / SERVING']) {
-      const stat = document.createElement('div');
-      stat.className = 'stat';
-      const number = document.createElement('b');
-      number.textContent = 'TBD';
-      const caption = document.createElement('span');
-      caption.textContent = label;
-      stat.append(number, caption);
-      stats.append(stat);
-    }
-    body.append(stats);
-  }
-  const controls = document.createElement('div');
-  controls.className = 'scale-controls';
-  controls.setAttribute('role', 'group');
-  controls.setAttribute('aria-label', 'Recipe scale');
-  const text = document.createElement('pre');
-  const macro = document.createElement('div');
-  macro.className = 'macro-box';
-  const heading = document.createElement('strong');
-  heading.textContent = 'MACROS';
-  const values = document.createElement('div');
-  values.style.whiteSpace = 'pre-wrap';
-  macro.append(heading, values);
-  const stats = appendStats(body, entry);
-  if (stats) {
-    const labels = stats.querySelectorAll('span');
-    labels[0].textContent = 'CALORIES / SERVING';
-    labels[1].textContent = 'PROTEIN / SERVING';
-  }
-  function update(scale) {
-    text.textContent = recipeBody(entry, scale) + '\n\nNOTES\n' + recipes.get(entry.name).notes;
-    values.textContent = macroText(entry, scale);
-    // Recipe stat cards are per-serving values and do not change with batch scale.
-    if (stats) {
-      const numbers = stats.querySelectorAll('b');
-      numbers[0].textContent = formatNumber(entry.cal);
-      numbers[1].textContent = formatNumber(entry.p) + ' g';
-    }
-    for (const button of controls.children) {
-      const active = Number(button.dataset.scale) === scale;
-      button.classList.toggle('active', active);
-      button.setAttribute('aria-pressed', String(active));
-    }
-  }
-  for (const [label, scale] of SCALE_OPTIONS) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.textContent = label;
-    button.dataset.scale = scale;
-    button.addEventListener('click', () => {
-      recipeScales.set(entry.name, scale);
-      details.open = true;
-      openEntries.add(entry.name);
-      update(scale);
-      updateToggle();
-    });
-    controls.append(button);
-  }
-  body.append(controls, text, macro);
-  update(recipeScales.get(entry.name) || 1);
-}
-function updateToggle() {
-  const details = [...area.querySelectorAll('details')];
-  document.querySelector('#toggle').textContent =
-    details.length && details.every(item => item.open) ? 'Collapse all' : 'Expand all';
-}
-function render() {
-  renderCategories();
-  const query = search.value.toLowerCase();
-  const all = category === 'All Recipes' || category === 'All Items';
-  const found = entries.filter(entry => entry.tab === tab &&
-    (all || entry.categories.includes(category)) &&
-    (entry.name + ' ' + entry.sub + ' ' + entry.text + ' ' + entry.categories.join(' ')).toLowerCase().includes(query));
-  area.replaceChildren();
-  document.querySelector('#count').textContent = found.length + (found.length === 1 ? ' entry' : ' entries');
-  for (const entry of found) {
-    const details = document.createElement('details');
-    details.open = openEntries.has(entry.name);
-    const summary = document.createElement('summary');
-    const title = document.createElement('div');
-    const strong = document.createElement('strong');
-    strong.textContent = entry.name;
-    const small = document.createElement('small');
-    small.textContent = entry.sub;
-    title.append(strong, small);
-    if (entry.categories.length) {
-      const tag = document.createElement('span');
-      tag.className = 'recipe-category';
-      tag.textContent = entry.categories.join(' · ');
-      title.append(tag);
-    }
-    summary.append(title);
-    const body = document.createElement('div');
-    body.className = 'inside';
-    if (entry.tab === 'Cook Book') appendRecipe(body, entry, details);
-    else {
-      appendStats(body, entry);
-      const text = document.createElement('pre');
-      text.textContent = entry.text;
-      body.append(text);
-    }
-    details.addEventListener('toggle', () => {
-      if (!details.isConnected) return;
-      if (details.open) openEntries.add(entry.name);
-      else openEntries.delete(entry.name);
-      updateToggle();
-    });
-    details.append(summary, body);
-    area.append(details);
-  }
-  if (!found.length) {
-    const message = document.createElement('p');
-    message.id = 'empty';
-    message.textContent = !all && !entries.some(entry => entry.tab === tab && entry.categories.includes(category))
-      ? (tab === 'Cook Book' ? 'No recipes in this category yet.' : 'No items in this category yet.')
-      : 'No matching entries. Try a different search.';
-    area.append(message);
-  }
-  updateToggle();
-}
-document.querySelectorAll('[data-tab]').forEach(button => {
-  button.addEventListener('click', () => {
-    tab = button.dataset.tab;
-    category = selections[tab];
-    document.querySelectorAll('[data-tab]').forEach(item => {
-      item.classList.toggle('active', item === button);
-      item.setAttribute('aria-pressed', String(item === button));
-    });
-    render();
-  });
-});
-search.addEventListener('input', render);
-document.querySelector('#toggle').addEventListener('click', () => {
-  const details = [...area.querySelectorAll('details')];
-  const open = details.some(item => !item.open);
-  details.forEach(item => {
-    item.open = open;
-    const name = item.querySelector('strong').textContent;
-    if (open) openEntries.add(name);
-    else openEntries.delete(name);
-  });
-  updateToggle();
-});
-async function loadDatabase() {
-  const manifest = await fetch('recipes/index.json', {cache:'no-store'}).then(r => { if(!r.ok) throw new Error('Recipe index failed: '+r.status); return r.json(); });
-  const recipeRecords = await Promise.all(manifest.map(item => fetch('recipes/'+item.file, {cache:'no-store'}).then(r => { if(!r.ok) throw new Error('Recipe failed: '+item.file); return r.json(); })));
-  const pantryRecords = await fetch('data/pantry.json', {cache:'no-store'}).then(r => { if(!r.ok) throw new Error('Pantry database failed: '+r.status); return r.json(); });
-  entries = [
-    ...recipeRecords.map(record => ({...record, tab:'Cook Book', categories: record.categories || []})),
-    ...pantryRecords
-  ];
-  recipes = new Map(entries.filter(e => e.tab === 'Cook Book').map(e => [e.name, parseRecipe(e)]));
-  render();
-}
-loadDatabase().catch(error => {
-  console.error(error);
-  area.innerHTML = '<p id="empty">The recipe database could not be loaded. Please refresh the page.</p>';
-});
-
+const area=document.querySelector('#entries'),search=document.querySelector('#search'),categoryArea=document.querySelector('#categories');
+const openEntries=new Set();
+function renderCategories(){categoryArea.replaceChildren();const all=tab==='Pantry'?'All Items':'All Recipes';for(const label of [all,...(tab==='Pantry'?pantryCategories:recipeCategories)]){const b=document.createElement('button');b.type='button';b.textContent=label;b.className=category===label?'active':'';b.setAttribute('aria-pressed',String(category===label));b.onclick=()=>{category=label;selections[tab]=label;render()};categoryArea.append(b)}}
+function appendStats(body,entry){if(entry.cal===undefined&&entry.p===undefined)return;const stats=document.createElement('div');stats.className='stats';for(const [value,label] of [[entry.cal??'TBD','CALORIES / SERVING'],[entry.p===undefined?'TBD':entry.p+' g','PROTEIN / SERVING']]){const stat=document.createElement('div');stat.className='stat';const n=document.createElement('b');n.textContent=value;const c=document.createElement('span');c.textContent=label;stat.append(n,c);stats.append(stat)}body.append(stats)}
+function appendComments(body,entry){const section=document.createElement('section');section.className='comments-section';const h=document.createElement('h3');h.textContent='Comments & Ratings';const list=document.createElement('div');list.className='comments-list';list.textContent='Loading comments…';const form=document.createElement('form');form.className='comment-form';const fields=[['Display name','input'],['Rating','select'],['Comment','textarea']];const controls={};for(const [label,type] of fields){const l=document.createElement('label');l.textContent=label;let el=document.createElement(type);if(type==='input'){el.type='text';el.maxLength=100;el.placeholder='Your name'}if(type==='select'){for(let r=5;r>=1;r--){const o=document.createElement('option');o.value=r;o.textContent=r+(r===1?' star':' stars');el.append(o)}}if(type==='textarea'){el.maxLength=5000;el.rows=5;el.placeholder='Share your thoughts about this recipe…'}el.required=true;controls[type]=el;form.append(l,el)}const submit=document.createElement('button');submit.type='submit';submit.textContent='Submit comment';const status=document.createElement('p');status.className='comment-status';status.setAttribute('aria-live','polite');form.append(submit,status);section.append(h,list,form);body.append(section);
+async function load(){try{const r=await fetch(COMMENTS_API+'?recipe_id='+encodeURIComponent(entry.name),{cache:'no-store'});const data=await r.json();if(!r.ok||!data.ok)throw new Error(data.error||'Comments could not be loaded.');list.replaceChildren();if(!data.comments.length){const p=document.createElement('p');p.textContent='No approved comments yet. Be the first to comment.';list.append(p);return}for(const item of data.comments){const card=document.createElement('article');card.className='comment-card';const author=document.createElement('strong');author.textContent=item.display_name;const stars=document.createElement('span');stars.className='comment-stars';stars.textContent='★'.repeat(item.rating)+'☆'.repeat(5-item.rating);const p=document.createElement('p');p.textContent=item.body;card.append(author,stars,p);list.append(card)}}catch(e){console.error(e);list.textContent='Comments could not be loaded.'}}
+form.addEventListener('submit',async e=>{e.preventDefault();submit.disabled=true;status.textContent='Submitting…';try{const r=await fetch(COMMENTS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({recipe_id:entry.name,display_name:controls.input.value.trim(),body:controls.textarea.value.trim(),rating:Number(controls.select.value)})});const data=await r.json();if(!r.ok||!data.ok)throw new Error(data.error||'Comment could not be submitted.');form.reset();controls.select.value='5';status.textContent='Comment submitted. It will appear after approval.'}catch(err){console.error(err);status.textContent=err.message||'Comment could not be submitted.'}finally{submit.disabled=false}});load()}
+function appendRecipe(body,entry){appendStats(body,entry);const text=document.createElement('pre');text.textContent=entry.text||'';body.append(text);if(entry.macros){const macro=document.createElement('div');macro.className='macro-box';const h=document.createElement('strong');h.textContent='MACROS';const p=document.createElement('pre');p.textContent=entry.macros;macro.append(h,p);body.append(macro)}appendComments(body,entry)}
+function updateToggle(){const all=[...area.querySelectorAll('details')];document.querySelector('#toggle').textContent=all.length&&all.every(x=>x.open)?'Collapse all':'Expand all'}
+function render(){renderCategories();const q=search.value.toLowerCase();const all=category==='All Recipes'||category==='All Items';const found=entries.filter(e=>e.tab===tab&&(all||(e.categories||[]).includes(category))&&((e.name||'')+' '+(e.sub||'')+' '+(e.text||'')+' '+(e.categories||[]).join(' ')).toLowerCase().includes(q));area.replaceChildren();document.querySelector('#count').textContent=found.length+(found.length===1?' entry':' entries');for(const entry of found){const details=document.createElement('details');details.open=openEntries.has(entry.name);const summary=document.createElement('summary');const title=document.createElement('div');const strong=document.createElement('strong');strong.textContent=entry.name;const small=document.createElement('small');small.textContent=entry.sub||'';title.append(strong,small);if((entry.categories||[]).length){const tag=document.createElement('span');tag.className='recipe-category';tag.textContent=entry.categories.join(' · ');title.append(tag)}summary.append(title);const body=document.createElement('div');body.className='inside';if(entry.tab==='Cook Book')appendRecipe(body,entry);else{appendStats(body,entry);const pre=document.createElement('pre');pre.textContent=entry.text||'';body.append(pre)}details.addEventListener('toggle',()=>{if(!details.isConnected)return;details.open?openEntries.add(entry.name):openEntries.delete(entry.name);updateToggle()});details.append(summary,body);area.append(details)}if(!found.length){const p=document.createElement('p');p.id='empty';p.textContent='No matching entries. Try a different search.';area.append(p)}updateToggle()}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{tab=b.dataset.tab;category=selections[tab];document.querySelectorAll('[data-tab]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b))});render()}));search.addEventListener('input',render);document.querySelector('#toggle').addEventListener('click',()=>{const all=[...area.querySelectorAll('details')],open=all.some(x=>!x.open);all.forEach(x=>{x.open=open;const n=x.querySelector('strong').textContent;open?openEntries.add(n):openEntries.delete(n)});updateToggle()});
+async function loadDatabase(){const manifest=await fetch('recipes/index.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Recipe index failed: '+r.status);return r.json()});const recipes=await Promise.all(manifest.map(item=>fetch('recipes/'+item.file,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Recipe failed: '+item.file);return r.json()})));const pantry=await fetch('data/pantry.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Pantry database failed: '+r.status);return r.json()});entries=[...recipes.map(x=>({...x,tab:'Cook Book',categories:x.categories||[]})),...pantry];render()}
+loadDatabase().catch(error=>{console.error(error);area.innerHTML='<p id="empty">The recipe database could not be loaded. Please refresh the page.</p>'});
 </script>
 </body>
 </html>
