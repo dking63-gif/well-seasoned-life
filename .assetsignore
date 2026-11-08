@@ -1,0 +1,9 @@
+.git/
+.github/
+editor/worker.mjs
+tests/
+*.patch
+*.zip
+README.md
+EDITOR_SETUP.md
+wrangler.jsonc
