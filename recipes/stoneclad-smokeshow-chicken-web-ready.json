@@ -1,6 +1,6 @@
 {
   "name": "Stoneclad Smokeshow Chicken",
-  "sub": "Smoky chicken tenderloins with root vegetables and a lightly thickened savory broth",
+  "sub": "Smoky chicken tenderloins with root vegetables and a lightly thickened savory broth. Yum!",
   "categories": [
     "Main Dishes"
   ],
@@ -14,15 +14,15 @@
       "protein_g": 200.1,
       "carbohydrate_g": 180.9,
       "fat_g": 35.9,
-      "fiber_g": 30.0,
+      "fiber_g": 30,
       "sodium_mg": 1968
     },
     "per_serving": {
       "calories": 312,
       "protein_g": 33.4,
       "carbohydrate_g": 30.1,
-      "fat_g": 6.0,
-      "fiber_g": 5.0,
+      "fat_g": 6,
+      "fiber_g": 5,
       "sodium_mg": 328
     }
   }
