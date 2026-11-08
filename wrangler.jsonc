@@ -2,11 +2,13 @@
   "name": "the-well-seasoned-life",
   "compatibility_date": "2026-10-31",
   "assets": {
-    "directory": ".",
+    "directory": "./dist",
     "binding": "ASSETS",
     "run_worker_first": [
       "/api/editor/*"
-    ]
+    ],
+    "html_handling": "auto-trailing-slash"
   },
-  "main": "editor/worker.mjs"
+  "main": "editor/worker.mjs",
+  "$schema": "./node_modules/wrangler/config-schema.json"
 }
