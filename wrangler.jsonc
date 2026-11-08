@@ -10,5 +10,9 @@
     "html_handling": "auto-trailing-slash"
   },
   "main": "editor/worker.mjs",
-  "$schema": "./node_modules/wrangler/config-schema.json"
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "previews": {},
+  "build": {
+    "command": "npm run build"
+  }
 }
