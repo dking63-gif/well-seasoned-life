@@ -1,12 +1,8 @@
 {
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "the-well-seasoned-life",
   "compatibility_date": "2026-10-31",
   "assets": {
-    "directory": ".",
-    "binding": "ASSETS",
-    "run_worker_first": [
-      "/api/editor/*"
-    ]
-  },
-  "main": "editor/worker.mjs"
+    "directory": "./dist"
+  }
 }

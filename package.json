@@ -1,0 +1,12 @@
+{
+  "name": "well-seasoned-life-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-recipes.mjs",
+    "validate": "node scripts/build-recipes.mjs --validate-only"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
