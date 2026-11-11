@@ -45,7 +45,7 @@ function titleCase(h) {
   return h.toLowerCase().replace(/\b[a-z]/g, c => c.toUpperCase());
 }
 
-function normalizeRecipe(data) {
+function normalizeRecipe(data, manifestId) {
   const raw = String(data.text || '').replace(/\\n/g, '\n').replace(/\r\n?/g, '\n');
   const sections = [];
   let current = null;
@@ -72,7 +72,7 @@ function normalizeRecipe(data) {
   });
   const ofKind = k => sections.filter(x => x.kind === k).flatMap(x => x.lines);
   return {
-    id: data.id || slugify(data.name || ''),
+    id: data.id || manifestId || slugify(data.name || ''),
     title: data.name || data.title || '',
     description: data.sub || data.description || '',
     categories: toList(data.categories),
@@ -81,6 +81,9 @@ function normalizeRecipe(data) {
     ingredients: ofKind('ingredients'),
     steps: ofKind('method'),
     source,
+    cal: data.cal,
+    p: data.p,
+    na: data.na,
     images: recipeImages(data)
   };
 }
@@ -109,12 +112,12 @@ function absoluteUrl(u) {
 function validateRecipes(recipes) {
   const errors = [];
   const seen = new Map();
-  for (const { file, data } of recipes) {
+  for (const { file, data, manifestId } of recipes) {
     if (!data || typeof data !== 'object' || Array.isArray(data)) {
       errors.push(`${file}: recipe must be a JSON object.`);
       continue;
     }
-    const r = normalizeRecipe(data);
+    const r = normalizeRecipe(data, manifestId);
     if (!r.title.trim()) errors.push(`${file}: missing "name".`);
     if (!r.id || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(r.id)) {
       errors.push(`${file}: invalid or missing recipe id "${r.id}" (use lowercase letters, numbers, hyphens).`);
@@ -275,6 +278,11 @@ const CLIENT_SCRIPT = `<script>
 })();
 </script>`;
 
+function statsHtml(r) {
+  const box = (v, l) => `<div class="stat"><b>${escapeHtml(v)}</b><span>${l}</span></div>`;
+  return `<div class="stats">${box(r.cal ?? 'TBD', 'CALORIES / SERVING')}${box(r.p == null ? 'TBD' : r.p + ' g', 'PROTEIN / SERVING')}${box(r.na == null ? 'TBD' : r.na + ' mg', 'SODIUM / SERVING')}</div>`;
+}
+
 function sectionHtml(sec) {
   const h = sec.title ? `<h2>${escapeHtml(sec.title)}</h2>` : '';
   if (sec.kind === 'ingredients') return `${h}<ul>${sec.lines.map(ingredientHtml).join('')}</ul>`;
@@ -294,6 +302,7 @@ function renderRecipePage(r) {
   ${r.description ? `<p class="lead">${escapeHtml(r.description)}</p>` : ''}
   ${r.categories.length ? `<span class="recipe-category">${r.categories.map(escapeHtml).join(' · ')}</span>` : ''}
   ${r.images[0] ? `<img src="${escapeHtml(r.images[0])}" alt="${escapeHtml(r.title)}" style="max-width:100%;border-radius:10px;margin-top:14px">` : ''}
+  ${statsHtml(r)}
   <div class="scale-controls" style="margin:18px 0">
     ${r.scaleOptions.map(n => `<button type="button" data-m="${n}" class="${n === 1 ? 'active' : ''}">${scaleLabel(n)}</button>`).join('\n    ')}
   </div>
@@ -378,7 +387,7 @@ async function main() {
     let data;
     try { data = await readJson(path.join(RECIPES_DIR, file)); }
     catch (err) { throw new Error(`${file}: could not read recipe (${err.message})`); }
-    recipes.push({ file, data });
+    recipes.push({ file, data, manifestId: (item && item.id) || '' });
   }
 
   const errors = validateRecipes(recipes);
@@ -399,8 +408,8 @@ async function main() {
   await copySite();
 
   const entries = [];
-  for (const { data } of recipes) {
-    const r = normalizeRecipe(data);
+  for (const { data, manifestId } of recipes) {
+    const r = normalizeRecipe(data, manifestId);
     entries.push({ id: r.id, title: r.title, description: r.description });
     const dir = path.join(DIST, 'recipes', r.id);
     await fs.mkdir(dir, { recursive: true });
