@@ -1,12 +1,13 @@
 [
-   {
-    "title": "Your note title",
-    "date": "November 2026",
-    "text": "First paragraph.\nSecond paragraph."
-  },
   {
     "title": "Welcome to Kitchen Notes",
     "date": "November 2026",
     "text": "Tips, tricks, and rants from David's kitchen.\nMore notes coming soon."
   }
+   {
+    "title": "You have to try this",
+    "date": "November 2026",
+    "text": "Have you ever tried a cheap store-brand orange soda and found it disappointing compared to Sunkist/Orange Crush/Your Favorite Brand?" \n
+      "Here is a trick that will send the flavor into orbit.  ACV. That's right!  1-2 ounces added to a tall glass makes the orange flavor pop"
+  },
 ]
