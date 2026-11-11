@@ -221,10 +221,10 @@ const UTENSIL_SVG = '<svg viewBox="0 0 48 48" aria-hidden="true"><g transform="r
 // Same scaling and comments/ratings behavior as the home page; comments are keyed by the recipe name.
 const CLIENT_SCRIPT = `<script>
 (function(){
-  var fr={0.125:'1/8',0.25:'1/4',0.333:'1/3',0.375:'3/8',0.5:'1/2',0.625:'5/8',0.667:'2/3',0.75:'3/4',0.875:'7/8'};
+  var fr={0.0625:'1/16',0.125:'⅛',0.25:'¼',0.333:'⅓',0.375:'⅜',0.5:'½',0.625:'⅝',0.667:'⅔',0.75:'¾',0.875:'⅞'};
   function fmt(n){var w=Math.floor(n+0.02),f=n-w,best='';
     for(var k in fr){if(Math.abs(f-parseFloat(k))<0.02){best=fr[k];break}}
-    if(best)return (w?w+' ':'')+best;
+    if(best)return (w?w+(best.length>1?' ':''):'')+best;
     if(f<0.02||f>0.98)return String(Math.round(n));
     return String(Math.round(n*100)/100);}
   var scaleBtns=document.querySelectorAll('.scale-controls button');
