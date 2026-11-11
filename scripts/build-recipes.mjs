@@ -335,6 +335,26 @@ ${entries.map(e => `  <li><a href="/recipes/${escapeHtml(e.id)}/">${escapeHtml(e
   });
 }
 
+function renderNotesPage(notes) {
+  const cards = notes.map(n => `
+<article class="recipe-card">
+  <h2 style="margin-top:0">${escapeHtml(n.title || 'Untitled')}</h2>
+  ${n.date ? `<p class="lead">${escapeHtml(n.date)}</p>` : ''}
+  ${String(n.text || '').replace(/\r\n?/g, '\n').split(/\n+/).filter(Boolean).map(l => `<p>${escapeHtml(l)}</p>`).join('')}
+</article>`).join('\n');
+  const main = `
+<a class="back-link" href="/">← Back to the Cook Book</a>
+<h1 style="font:normal clamp(30px,5vw,44px) Georgia,serif;color:#711f58;margin:6px 0 4px">David's Kitchen Notes</h1>
+<p class="lead" style="color:#604a55">Tips, tricks, and rants from the kitchen.</p>
+${cards}`;
+  return layout({
+    title: "David's Kitchen Notes | The Well-Seasoned Life",
+    description: 'Tips, tricks, and rants from David in the kitchen.',
+    canonical: `${SITE_ORIGIN}/notes/`,
+    main
+  });
+}
+
 // ---------- Build ----------
 async function copySite() {
   await fs.rm(DIST, { recursive: true, force: true });
@@ -388,7 +408,18 @@ async function main() {
   }
   await fs.writeFile(path.join(DIST, 'recipes', 'index.html'), renderIndexPage(entries));
 
+  let hasNotes = false;
+  try {
+    const notes = await readJson(path.join(ROOT, 'data', 'notes.json'));
+    if (Array.isArray(notes)) {
+      await fs.mkdir(path.join(DIST, 'notes'), { recursive: true });
+      await fs.writeFile(path.join(DIST, 'notes', 'index.html'), renderNotesPage(notes));
+      hasNotes = true;
+    }
+  } catch { /* no notes file yet: skip the notes page */ }
+
   const urls = [`${SITE_ORIGIN}/`, `${SITE_ORIGIN}/recipes/`, `${SITE_ORIGIN}/about.html`,
+    ...(hasNotes ? [`${SITE_ORIGIN}/notes/`] : []),
     ...entries.map(e => `${SITE_ORIGIN}/recipes/${e.id}/`)];
   await fs.writeFile(path.join(DIST, 'sitemap.xml'),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
