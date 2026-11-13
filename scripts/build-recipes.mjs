@@ -65,7 +65,7 @@ function normalizeRecipe(data, manifestId) {
   }
   sections.forEach((sec, i) => {
     if (METHOD_RE.test(sec.heading)) sec.kind = 'method';
-    else if (INGREDIENT_RE.test(sec.heading) || (i === 0 && sec.heading)) sec.kind = 'ingredients';
+    else if (INGREDIENT_RE.test(sec.heading) || (i === 0 && sec.heading && sec.heading !== 'THE STORY')) sec.kind = 'ingredients';
     else sec.kind = 'text';
     sec.title = titleCase(sec.heading);
     if (sec.kind === 'method') sec.lines = sec.lines.map(l => l.replace(/^\d+[.)]\s+/, ''));
@@ -152,7 +152,7 @@ function ingredientHtml(line) {
   if (!m || /^\s*[–-]\s*\d/.test(m[3])) return `<li>${escapeHtml(line)}</li>`;
   const qty = parseQty(m[2]);
   if (!Number.isFinite(qty) || qty <= 0) return `<li>${escapeHtml(line)}</li>`;
-  return `<li>${escapeHtml(m[1] || '')}<span class="qty" data-base="${qty}">${escapeHtml(m[2].trim())}</span>${escapeHtml(m[3])}</li>`;
+  return `<li>${escapeHtml(m[1] || '')}<span class="qty" data-base="${qty}">${escapeHtml(m[2].trim())}</span>${escapeHtml(m[3]).replace(/\((\d+(?:\.\d+)?) (lb|oz|g|kg) total\b/g, (_, total, unit) => `(<span class="qty" data-base="${Number(total)}">${total}</span> ${unit} total`)}</li>`;
 }
 
 function scaleLabel(n) {
