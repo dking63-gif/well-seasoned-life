@@ -328,6 +328,7 @@ function renderRecipePage(r) {
 }
 
 function renderIndexPage(entries) {
+  entries = [...entries].sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base', numeric: true }));
   const main = `
 <a class="back-link" href="/">← Back to the Cook Book</a>
 <section class="recipe-card">
