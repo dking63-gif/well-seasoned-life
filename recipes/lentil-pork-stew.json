@@ -1,19 +1,70 @@
 {
+  "id": "lentil-pork-stew",
   "name": "Lentil & Pork Stew",
   "sub": "Hearty pork, lentils & vegetables · smoky beefy broth",
-  "cal": 629,
-  "p": 69.3,
+
+  "type": "recipe",
+
   "categories": [
     "Soups"
   ],
-  "text": "INGREDIENTS\n4½ lb aggressively trimmed pork butt, cut into roughly 1½-inch chunks\n1 meaty pork bone (about 13¾ oz), optional\n2 lb dry brown or green lentils, rinsed and picked over\n800 g red potatoes, skins on, cut into roughly 1-inch chunks\n591 g onion, diced\n471 g carrots, sliced\n312 g celery, sliced\n20 cups water\n3 tbsp Knorr beef bouillon\n2 tbsp Knorr Beef Concentrated Stock\n2 tbsp Lea & Perrins Worcestershire Sauce\n2 tbsp smoked paprika\n2 tsp garlic powder\n2 tsp onion powder\n2 tsp ground cumin\n2 tsp dried thyme\n1½ tsp coarse-ground black pepper\n2 bay leaves\nUp to 1 tsp chipotle powder, optional\n\nDIRECTIONS\n1. Combine the smoked paprika, garlic powder, onion powder, cumin, thyme, black pepper, and optional chipotle. Toss with the pork until thoroughly coated.\n2. Heat a large soup pot or skillet over medium-high to high heat. Brown the pork in batches, leaving enough room between pieces to develop a dark crust rather than steam. Transfer the browned pork to a bowl and reserve all juices.\n3. If using the meaty pork bone, brown it well on as many sides as possible and set it aside.\n4. Add the onions, carrots, and celery to the browned-pork drippings. Cook until softened and beginning to brown, scraping up the flavorful browned bits.\n5. Add some of the water and scrape the bottom of the pot thoroughly. Add the remaining water, beef bouillon, concentrated beef stock, Worcestershire sauce, and bay leaves.\n6. Return the browned pork and accumulated juices to the pot. Add the meaty bone. Bring to a gentle simmer, partially cover, and cook about 1½ hours, until the pork is becoming tender.\n7. Stir in the rinsed lentils. Maintain a gentle simmer and stir occasionally, particularly as the stew begins to thicken.\n8. Add the potatoes late enough in the cooking process that they become tender without completely breaking down.\n9. Continue simmering until the pork is very tender, the lentils are cooked through, and the potatoes are fork-tender. Add water if needed.\n10. Remove the pork bone. Strip off the tender meat and return it to the pot. Discard the cleaned bone.\n11. Taste and adjust salt and pepper only after the stew is completely cooked.\n\nNOTES\nYield: approximately 300 oz (about 12.5 × 24-oz servings).\nSmoked paprika provides the primary smoky flavor. Chipotle is optional.\nThe stew thickens substantially during cooking and refrigeration.\nLoosen leftovers with water or broth as needed.\n\nMACROS\nPer 24-oz serving: 629 calories · 69.3 g protein · 68.0 g carbs · 8.5 g fat · 11.4 g fiber",
-  "id": "lentil-pork-stew",
+
+  "mealType": [
+    "Lunch",
+    "Dinner"
+  ],
+
+  "protein": [
+    "Pork"
+  ],
+
+  "tags": [
+    "High Protein",
+    "Lentils",
+    "Pork",
+    "Stew",
+    "Soup",
+    "Meal Prep",
+    "One Pot",
+    "Smoky",
+    "Comfort Food",
+    "High Fiber"
+  ],
+
+  "dietary": [],
+
+  "difficulty": "Moderate",
+
+  "prepTime": 30,
+  "cookTime": 150,
+  "totalTime": 180,
+
+  "yield": "12.5 servings",
+  "servings": 12.5,
+
+  "searchTerms": [
+    "lentil stew",
+    "pork stew",
+    "lentil soup",
+    "high protein soup",
+    "meal prep soup",
+    "lentils and pork",
+    "smoky stew",
+    "bean soup alternative",
+    "winter soup"
+  ],
+
+  "cal": 629,
+  "p": 69.3,
+  "na": "~900",
+
+  "text": "...",
+
   "scaleOptions": [
     0.25,
     0.5,
     1,
     2,
     3
-  ],
-  "na": "~900"
+  ]
 }
